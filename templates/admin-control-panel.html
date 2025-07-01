@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adm edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link>
+</head>
+<body class="bg-gray-100">
+ 
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-4 hidden md:block">
+            <h2 class="text-xl font-bold mb-6 mt-4 text-center">🏆 Sistema de Pontos</h2>
+            <ul class="space-y-2">
+                
+                <li><a href="#dashboard" class="block py-2 px-4 bg-gray-700 rounded">📊 Pontuação das Casas</a></li>
+                <li><a href="#controle" class="block py-2 px-4 hover:bg-gray-700 rounded">🎛 Controle de Pontos</a></li>
+                <li><a href="#historico" class="block py-2 px-4 hover:bg-gray-700 rounded">📜 Histórico</a></li>
+            </ul>
+            <div class="mt-8 pt-4 border-t border-gray-700">
+
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto">
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center">
+                    <a href="/" class="mr-4 text-gray-600 hover:text-gray-900">
+                        <span class="material-icons">arrow_back</span>
+                    </a>
+                    <h1 class="text-2xl font-bold text-gray-800">Área de Administrador</h1>
+                </div>
+            </header>
+
+            <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <section id="dashboard" class="mb-12">
+                    <h2 class="text-xl font-semibold mb-4">📊 Pontuação das Casas</h2>
+
+                    <form method="post" id="periodo">
+                        <select class="flex-1 p-2 border rounded" required>
+                            <option value="0" id="Classe_manha">Manhã</option>
+                            <option value="1" id="Classe_tarde">Tarde</option>
+                            <option value="2" id="Classe_noite">Noite</option>
+                        </select>
+                        <button type="submit" name="periodo" class="bg-green-500 text-white px-4 py-2 rounded">Confirmar</button>
+                    </form>
+                    <!-- dinamic adition with js here -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" id="holder">
+                        <!-- DEFAULT CASA INFORMATION, DON'T DELETE!-->
+                        <div class="bg-white p-6 rounded-lg shadow house-jaguar" id="pontuation_table">
+                            <h3 class="font-medium text-gray-500" id="name">Jaguar</h3>
+                            <p class="text-3xl font-bold" id="points">1,250</p>
+                        </div>
+
+                    </div>
+                </section>
+             
+                <section id="controle" class="mb-12">
+                    <h2 class="text-xl font-semibold mb-4">🎛 Controle de Pontos</h2>
+                    
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="p-6 border-b">
+                            <h3 class="font-medium mb-2">Atribuição Manual</h3>
+                            <form method="post" class="flex flex-col md:flex-row gap-4">
+                                <select id="casa" name="casa" class="flex-1 p-2 border rounded" required>                        
+                                    <!-- Dinamic adition with js here! -->
+                                    <option value="0" selected disabled>Selecione a casa</option>
+                                </select>
+                                <input type="number" name="pontos" placeholder="Pontos" required class="flex-1 p-2 border rounded">
+                                <button type="submit" name="acao" value="adicionar" class="bg-green-500 text-white px-4 py-2 rounded">Adicionar Pontos</button>
+                                <button type="submit" name="acao" value="remover" class="bg-red-500 text-white px-4 py-2 rounded">Remover Pontos</button>
+                            </form>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="font-medium mb-4">Adicionar Pontos</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <form id="good-actions" class="space-y-2">
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="150">Aula Boa (+150)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="300">Aula Excelente (+300)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="200">Prova Paulista (+200)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="100">Boletim Azul (+100)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="200">Bom Comportamento (+200)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="150">Frequência Acima 75% (+150)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="200">Participação em Projetos (+200)</button>
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded" id="200">Atitude Positiva (+200)</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="font-medium mb-4">Remover Pontos</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <form id="bad-actions" class="space-y-2">
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-100">- Fone (-100)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-100">- Dormir (-100)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-300">- Infração Média (-300)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-200">- Atitude Negativa (-200)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-300">- Relatório (-300)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-400">- Suspensão (-400)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-200">- Indisciplina (-200)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-150">- Frequência Baixa (-150)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-200">- Celular (-200)</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" id="-200">- Sala Desorganizada (-200)</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="historico" class="mb-12">
+                    <h2 class="text-xl font-semibold mb-4">📜 Histórico Recente</h2>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <ul class="list-disc pl-5">
+                            <li>Jaguar ganhou 150 pontos - Aula Excelente</li>
+                            <li>Sarue perdeu 100 pontos - Uso de celular</li>
+                            <li>Urubu ganhou 200 pontos - Prova Paulista</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+<script src="../static/js/adminApp.js">
+</script>
+</body>
+</html>
+
+
+
