@@ -1,74 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Taça das Casas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/ranking-style.css">
+  <link rel="stylesheet" href="../static/css/ranking.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <title>Ranking</title>
 </head>
 <body>
-  <div class="ranking">
-    <table id="listaRanking">
-      <thead>
-        <tr>
-          <th>Casa</th>
-          <th>Pontuação</th>
-        </tr>
-      </thead>
-      <tbody id="classes">
-      </tbody>
-    </table>
-  </div>
 
+  <h1>Ranking das Salas</h1>
+  <div class="container">
 
-<script>
-// FUNÇÃO QUE ADICIONA O ELEMENTO DA SALA NO RANKING
-function addClass(className, pontuation) {
-  var listElement = document.getElementById("classes")
-  newTr = document.createElement("tr")
+    <!-- DINAMIC ADDITION WITH JS HERE! -->
+    <div class="item" id="name">
+      <div class="classificacao">1</div>
+      <div class="retangulo">
+        <div class="name">Sala 1</div>
+        <div class="conteudo-horizontal">
+          <img src="" alt="Imagem" class="icon">
+          <div class="pontos">1000 pontos</div>
+        </div>
+      </div>
+    </div>
 
-  const a = document.createElement("td"); a.textContent = className; newTr.appendChild(a)
-  const b = document.createElement("td"); b.textContent = pontuation; newTr.appendChild(b)
-
-  listElement.appendChild(newTr)
-}
-
-// PEGA O NOME DE TODAS AS CLASSES ALCOADAS NO DATABASE EM ORDENAÇÃO
-function fetchClassesName() {
-  return fetch('/classes-name')
-    .then(res => {
-      if (!res.ok) throw new Error(res.statusText);
-      return res.json();
-    })
-    .then(data => data.names);
-}
-
-// PEGA OS PONTOS DE TODAS AS CLASSES NO DATABASE EM ORDENAÇÃO
-function fetchClassesPontuation() {
-  return fetch('/classes-points')
-    .then(res => {
-      if (!res.ok) throw new Error(res.statusText);
-      return res.json();
-    })
-    .then(data => data.names);
-}
-
-// Faz todas as aquisições a API necessarias (nome e pontos de todas as salas)
-fetchClassesName()
-  .then(classesName => {
-    const names = classesName
-    fetchClassesPontuation()
-      .then(classesPoints => {
-        const points = classesPoints;
-
-        //Cria um novo Tr para cada sala atribuindo seus nomes e pontos.
-        for (var c = 0; c < names.length; c++) {
-          addClass(names[c], points[c])
-        }
-      })
-      .catch(err => console.error(err));
-  })
-  .catch(err => console.error(err));
-</script>
 </body>
+
+<script src="../static/js/ranking.js"></script>
+<script src="../static/js/changeTheme.js"></script>
 </html>

@@ -25,6 +25,7 @@
         <i class='bx bxs-lock-alt'></i>
         <input type="password" id="password" name="password" placeholder="Digite sua senha" autocomplete="current-password" required />
       </div>
+      <p class="error">{{ error_message }}</p>
 
       <div class="checkbox-container">
         <input type="checkbox" id="remember" name="remember" />
@@ -32,7 +33,7 @@
       </div>
 
       <div class="buttons">
-        <button type="button" class="btn-back" onclick="history.back()">Voltar</button>
+        <button type="button" class="btn-back" onclick="window.location.href='/';">Voltar</button>
         <button type="submit" class="btn-login">Entrar</button>
       </div>
     </form>
