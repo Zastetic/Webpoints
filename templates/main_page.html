@@ -18,6 +18,11 @@
 </head>
 <body>
   <header>
+    <script>
+    fetch("https://seu-tunel.ngrok.io", {
+    headers: { "ngrok-skip-browser-warning": "true" }
+    })
+    </script>
   <div class="topo-direito">
     <div class="modo-escuro-container">
       
@@ -93,5 +98,7 @@
     <script>
         function changeIframeContent(content, zoom) { document.getElementById("contiframe").src = content; document.getElementById("contiframe").style.zoom = zoom}
     </script>
+
+
 </body>
 </html>
