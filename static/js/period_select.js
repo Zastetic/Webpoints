@@ -7,6 +7,5 @@ function setPeriodo(_periodo) {
   .then(res => res.json())
   .then(data => {
     localStorage["periodo"] = data.periodo
-    window.location.reload()
   });
 }
