@@ -2,7 +2,12 @@ from sqlalchemy import create_engine, String, Integer, Column # type: ignore
 from sqlalchemy.orm import sessionmaker, declarative_base # type: ignore
 from sqlalchemy.inspection import inspect
 from random import randint as rd
+from os import path, mkdir
 
+if not path.exists("database"):
+    mkdir("database")
+    print("database folder created!")
+    
 # BANCO SQLITE
 db = create_engine ("sqlite:///database/geral_database.db")
 Session = sessionmaker(bind=db)
